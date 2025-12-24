@@ -23,3 +23,18 @@ docker build -t ml-inference-api .
 docker run -p 8000:8000 ml-inference-api
 ```
 
+## Why I chose this model
+
+I selected the ```distilbert-base-uncased-finetuned-sst-2-english``` model from the Hugging Face model hub for this demonstration because it provides a good balance between practicality, performance, and simplicity for an inference-focused deployment task.
+
+This model is:
+
+- Lightweight and fast — DistilBERT is a distilled version of BERT, meaning it retains most of the model’s accuracy while being significantly smaller and more efficient to load and run, which is ideal for CPU-based containers.
+
+- Pretrained for a clear real-world use case — The model is fine-tuned for sentiment analysis, a common production task that maps naturally to a simple API interface (input text → label + confidence score).
+
+- Deterministic and easy to validate — The outputs are human-interpretable, making it easy to test the service through API calls and demonstrate correct behavior without requiring additional preprocessing or custom datasets.
+
+- Well-supported in Hugging Face pipelines — It integrates cleanly with the transformers pipeline API, which allows the model to be loaded once at startup and reused efficiently across multiple requests.
+
+Overall, this model is a strong fit for the assignment because the goal of this demo is to showcase reliable model serving, not model complexity — and this model enables that effectively.
